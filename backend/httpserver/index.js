@@ -4,16 +4,13 @@ var serveport       = 80,
     express         = require('express'),
     UUID            = require('node-uuid'),
     verbose         = true,
-    https           = require('https'),
+    http           = require('http'),
     fs              = require('fs'),
     exp             = express(),
 //    gameProcess     = require("./gameProcess.gyp"),
     wsserver        = require('ws').Server;
 
-var httpsServer = https.createServer({
-    key: fs.readFileSync('key.pem'),
-    cert: fs.readFileSync('cert.pem')
-}, exp).listen(serveport);
+var httpsServer = http.createServer(exp).listen(serveport);
 if(verbose) console.log(" ")
 if(verbose) console.log('\t :: Express :: Opened Port Listener :: Port ' + serveport);
 
